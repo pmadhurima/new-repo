@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>test for cube</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<script src="http://threejs.org/build/three.min.js"></script>
+        <script src="js/controls/OrbitControls.js"></script>
+		<script>
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+            var contorls = new THREE.OrbitControls(camera);
+            contorls.addEventListener('change',render);
+
+            var width = 5, height = 1, depth = 3;
+
+            var textureWidth = 30.48,textureHeight = 24.38;
+
+			var geometry = new THREE.BoxGeometry( width , height , depth );
+
+            var face1 = [
+                    new THREE.Vector2(0 , 0),
+                    new THREE.Vector2(width / textureWidth , 0),
+                    new THREE.Vector2(width / textureWidth , height / textureHeight ),
+                    new THREE.Vector2(0 , height / textureHeight)
+            ];
+
+            var face2 = [
+                    new THREE.Vector2(0 ,0 ),
+                    new THREE.Vector2(depth / textureWidth , 0),
+                    new THREE.Vector2(depth / textureWidth , height / textureHeight ),
+                    new THREE.Vector2(0 , height / textureHeight)
+            ];
+            var face3 = [
+                    new THREE.Vector2(0,0),
+                    new THREE.Vector2(width / textureWidth , 0),
+                    new THREE.Vector2(width / textureWidth , depth / textureHeight ),
+                    new THREE.Vector2(0 , depth / textureHeight)
+            ];
+
+            geometry.faceVertexUvs[0] = [];
+
+            geometry.faceVertexUvs[0][10] = [face1[0] , face1[1],face1[3]];
+            geometry.faceVertexUvs[0][11] = [face1[1] , face1[2],face1[3]];
+
+            geometry.faceVertexUvs[0][2] = [face2[0],face2[1],face2[3] ];
+            geometry.faceVertexUvs[0][3] = [face2[1],face2[2],face2[3] ];
+
+            geometry.faceVertexUvs[0][0] = [ face2[0],face2[1],face2[3] ];
+            geometry.faceVertexUvs[0][1] = [ face2[1],face2[2],face2[3] ];
+
+            geometry.faceVertexUvs[0][8] = [face1[0] , face1[1],face1[3]];
+            geometry.faceVertexUvs[0][9] = [face1[1] , face1[2],face1[3]];
+
+            geometry.faceVertexUvs[0][6] = [face3[0],face3[1],face3[3] ];
+            geometry.faceVertexUvs[0][7] = [face3[1],face3[2],face3[3] ];
+
+            geometry.faceVertexUvs[0][4] = [ face3[0],face3[1],face3[3] ];
+            geometry.faceVertexUvs[0][5] = [ face3[1],face3[2],face3[3] ];
+
+            var texture = THREE.ImageUtils.loadTexture( "texture2.jpg" );
+
+			var material = new THREE.MeshLambertMaterial({map: texture });
+
+			var cube = new THREE.Mesh( geometry, material );
+			scene.add( cube );
+
+//            var mat1 = new THREE.MeshBasicMaterial({color : 0x0000FF});
+//            var mat2 = new THREE.MeshBasicMaterial({color : 0xFF0000});
+//            var mat3 = new THREE.MeshBasicMaterial({color : 0xFFFF00});
+//            var mat4 = new THREE.MeshBasicMaterial({color : 0x000000});
+//            var mat5 = new THREE.MeshBasicMaterial({color : 0x006600});
+//            var mat6 = new THREE.MeshBasicMaterial({color : 0x663300});
+//
+//            var materials =  [mat1 , mat2 , mat3 , mat4 , mat5 , mat6];
+//            var facemat = new THREE.MeshFaceMaterial(materials);
+//
+//            var mesh = new THREE.Mesh(geometry,facemat);
+//            scene.add(mesh);
+
+
+            var light = new THREE.AmbientLight(0xffffff);
+            scene.add(light);
+
+			camera.position.z = 10;
+
+			var render = function () {
+				requestAnimationFrame( render );
+
+				renderer.render(scene, camera);
+			};
+
+			render();
+		</script>
+	</body>
+</html>

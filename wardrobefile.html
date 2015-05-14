@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<title>WARDROBE DEMO</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+        <script src="js/three.min.js"></script>
+        <script src="js/controls/OrbitControls.js"></script>
+        <script src="js/objExporter.js"></script>
+        <script src="dat.gui.js"></script>
+        <script src="ward3.js"></script>
+	</head>
+	<body>
+        <div>
+            <form name="inputform" action="" method="get">
+                <label>Design Data : </label>
+                <input type="text" name="jsondata">
+                <input type="button" value="show design" onclick="processForm(this.form)"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <select name="color" onchange="changeColor(this.form)">
+                    <option value="0">default</option>
+                    <option value="1">pattern1</option>
+                    <option value="2">pattern2</option>
+                    <option value="3">pattern3</option>
+                </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <select name="doorstatus" onclick="updatedoors(this.form)">
+                    <option value="0">show</option>
+                    <option value="1">hide</option>
+                </select>
+            </form>
+        </div>
+        <div id="renderer">
+            <!--for drawing canvas-->
+        </div>
+		<script>
+//			Our Javascript will go here.
+		</script>
+	</body>
+</html>

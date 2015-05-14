@@ -1,0 +1,24 @@
+var dirlight = new THREE.DirectionalLight(0xBCED91,0.5);
+    dirlight.position.set(0,0,1);
+    dirlight.name = "dirlight";
+    //scene.add(dirlight);
+
+    var dirlight1 = new THREE.DirectionalLight(0xffffff);
+    dirlight1.position.set(0,1,0);
+    dirlight1.castShadow = true;
+    dirlight1.shadowCameraVisible = true;
+    dirlight1.shadowDarkness = 0.2;
+    dirlight1.shadowMapWidth = dirlight1.shadowMapHeight = 1000;
+    dirlight1.name = "dirlight1";
+    //scene.add(dirlight1);
+
+var dirlight2 = new THREE.DirectionalLight(0xBCED91,1.2);
+    dirlight2.position.set(-1,0,0);
+    dirlight2.name = "dirlight2";
+    //scene.add(dirlight2);
+
+    var dirlight3 = new THREE.DirectionalLight(0xBCED91,1.2);
+    dirlight3.position.set(1,0,0);
+    dirlight3.name = "dirlight3";
+    //scene.add(dirlight3);
+

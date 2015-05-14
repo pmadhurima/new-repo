@@ -1,0 +1,12 @@
+#renderer{
+    position: absolute;
+    top: 5%;
+    z-index: 2;
+}
+
+#controls{
+    position: absolute;
+    background-color: #404040;
+    z-index: 3;
+    width : 100%;;
+}

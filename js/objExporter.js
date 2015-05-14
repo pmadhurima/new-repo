@@ -17,7 +17,7 @@ THREE.OBJExporter.prototype = {
 		var indexNormals = 0;
 
 		var parseObject = function ( child ) {
-
+//hgdfhgf
 			var nbVertex = 0;
 			var nbVertexUvs = 0;
 			var nbNormals = 0;
